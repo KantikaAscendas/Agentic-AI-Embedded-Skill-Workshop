@@ -18,4 +18,20 @@ When the user asks to run this workshop:
 - Derive absolute paths from each script location; never depend on the current working directory.
 - Work one phase at a time and pause for approval at every phase boundary.
 
+## MATLAB script authoring
+
+- Create each participant-facing MATLAB workflow step as a plain-text `.m` live script under `agentic_ai/generated`.
+- Use MATLAB Live Editor rich-text syntax (`%[text]` and `%%`) so the objective, inputs, actions, evidence, and conclusion are displayed alongside the executable MATLAB code.
+- Do not create binary `.mlx` files. The `.m` files must remain readable, reviewable, and version-control friendly on GitHub.
+- Every phase live script must include:
+  1. Purpose.
+  2. Required inputs.
+  3. Deployment constraints.
+  4. Executable MATLAB code.
+  5. Saved evidence and result paths.
+  6. Result summary.
+  7. Approval gate for the next phase.
+- Keep code-generation entry-point functions and reusable helper functions as standard MATLAB `.m` function files. Do not convert these functions into live scripts.
+- Save plots, tables, and validation evidence under `agentic_ai/results`. Inline Live Editor outputs may be used for presentation, but the saved result files remain the authoritative evidence.
+
 The participant guide is `Workshop Instruction Embedded AI.pdf`.

@@ -11,6 +11,8 @@ This repository contains the participant files for the one-hour Battery State-of
 5. Confirm that the participant result is `READY=true`.
 6. Open this repository in Codex and begin with the start prompt in the PDF.
 
+For a Thai explanation of every distributed file and folder, read [`REPOSITORY_GUIDE_TH.md`](REPOSITORY_GUIDE_TH.md).
+
 ## Codex account for the workshop
 
 - A ChatGPT Free account can be used for the guided exercises; a paid plan is not required to attend.
