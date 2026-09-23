@@ -11,6 +11,14 @@ This repository contains the participant files for the one-hour Battery State-of
 5. Confirm that the participant result is `READY=true`.
 6. Open this repository in Codex and begin with the start prompt in the PDF.
 
+## Codex account for the workshop
+
+- A ChatGPT Free account can be used for the guided exercises; a paid plan is not required to attend.
+- Free-plan Codex usage is limited and can vary with the model, task complexity, context, reasoning, and tool use.
+- Sign in and run a short Codex test before the event. If a limit is reached during the workshop, pair with another participant and use the verified fallback scripts in `agentic_ai/reference`.
+- An OpenAI API key is not required for this workshop.
+- See the [official Codex pricing and usage guidance](https://learn.chatgpt.com/docs/pricing) for current plan information.
+
 ## Repository contents
 
 - `LGHG2@n10C_to_25degC`: prepared train, validation, and test data used by the workshop.
@@ -32,4 +40,4 @@ This repository contains the participant files for the one-hour Battery State-of
 
 ## Source and license
 
-The battery workshop materials are curated from the TechSource Ascendas MATLAB Day Singapore 2026 workshop. The applicable MathWorks license is included in `license`.
+This workshop includes adapted MathWorks battery State-of-Charge example materials. The applicable copyright notice and license are included in `license`.
