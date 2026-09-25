@@ -10,7 +10,7 @@ This repository contains the participant files for the one-hour Battery State-of
 4. Open `Aimbdworkshop.prj` in MATLAB R2026a.
 5. Run `agentic_ai/scripts/workshopPreflight.m`.
 6. Confirm `READY=true`. If only the desktop compiler is unavailable, continue as `READY WITH FALLBACK` and use the instructor-prepared MEX evidence.
-7. Open this repository in Codex and begin with the start prompt in the workshop PDF.
+7. Open this repository in Codex and copy the prompts from [`WORKSHOP_PROMPTS.md`](WORKSHOP_PROMPTS.md).
 
 For a Thai explanation of every distributed file and folder, read [`REPOSITORY_GUIDE_TH.md`](REPOSITORY_GUIDE_TH.md).
 
@@ -32,6 +32,7 @@ For a Thai explanation of every distributed file and folder, read [`REPOSITORY_G
 - `agentic_ai/reference`: verified Part 1 and Part 2 instructor fallback scripts.
 - `agentic_ai/generated`: agents add visible, reproducible MATLAB scripts here.
 - `agentic_ai/results` and `agentic_ai/build`: generated locally and excluded from Git.
+- `WORKSHOP_PROMPTS.md`: copyable prompts for every gated workshop phase and setup recovery.
 
 ## Workshop boundaries
 
