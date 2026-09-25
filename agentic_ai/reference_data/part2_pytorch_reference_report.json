@@ -1,0 +1,12 @@
+{
+  "tests": 200,
+  "input_shape_per_test": [
+    5
+  ],
+  "output_shape_per_test": [
+    1
+  ],
+  "torch_version": "2.8.0+cpu",
+  "soc_rmse_on_selected_inputs": 0.019247296286074942,
+  "soc_mae_on_selected_inputs": 0.012862168177962303
+}
