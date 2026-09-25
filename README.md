@@ -5,7 +5,7 @@ This repository contains the participant files for the one-hour Battery State-of
 ## Start here
 
 1. Read `MATLAB Desktop Setup Instruction - Agentic AI Embedded Skill Workshop.pdf` and install MATLAB R2026a, the required add-ons, and the compiler for your operating system.
-2. Read `Workshop Instruction Embedded AI.pdf` and complete its preparation checklist.
+2. Read [`Workshop Instruction Embedded AI.md`](Workshop%20Instruction%20Embedded%20AI.md) online, or use `Workshop Instruction Embedded AI.pdf` as the printable version.
 3. Clone this repository to a short, writable local path.
 4. Open `Aimbdworkshop.prj` in MATLAB R2026a.
 5. Run `agentic_ai/scripts/workshopPreflight.m`.
@@ -33,6 +33,8 @@ For a Thai explanation of every distributed file and folder, read [`REPOSITORY_G
 - `agentic_ai/generated`: agents add visible, reproducible MATLAB scripts here.
 - `agentic_ai/results` and `agentic_ai/build`: generated locally and excluded from Git.
 - `WORKSHOP_PROMPTS.md`: copyable prompts for every gated workshop phase and setup recovery.
+- `Workshop Instruction Embedded AI.md`: complete web-readable participant guide with copyable commands and prompts.
+- `Workshop Instruction Embedded AI.pdf`: printable participant guide with the same workshop workflow.
 
 ## Workshop boundaries
 
