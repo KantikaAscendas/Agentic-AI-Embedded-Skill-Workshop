@@ -47,10 +47,16 @@ Check the reported sample count, RMSE, and prediction plot, then continue with t
 ## Phase 3 PyTorch import and equivalence
 
 ```text
-Proceed with Part 2 using Part_2_AI_import/models/mlp_soc_model.pt2. Import it with the modern R2026a workflow and rebuild it as a MATLAB-native dlnetwork. Use the MATLAB-managed PyTorch runtime to generate original reference outputs when available. If Python or PyTorch is unavailable, do not install packages; use the prepared PyTorch reference inputs and outputs in the repository. Run the approved equivalence tests, report MAE, RMSE, and maximum absolute error, open the native network in Deep Network Designer, then pause. Do not treat this MLP as the final embedded model.
+Proceed with Part 2 using Part_2_AI_import/models/mlp_soc_model.pt2. Import it with the modern MATLAB R2026a workflow and rebuild it as a MATLAB-native dlnetwork suitable for the Cortex-M deployment pattern. Do not create or configure an external Python environment. Use the prepared inputs and agentic_ai/reference_data/part2_pytorch_reference_outputs.csv as the original PyTorch reference, and keep the prepared sample order unchanged. Before equivalence testing, propose 20 representative cases, using five evenly spaced samples from each of the four temperature groups, and wait for approval. After approval, report MAE, RMSE, maximum absolute error, and cosine similarity. Open the native network in Deep Network Designer, run the existing Simulink integration model, save the comparison evidence, then pause. Do not treat this MLP as the final embedded model.
 ```
 
-Confirm that the imported MATLAB network agrees with the PyTorch reference, then continue with the Phase 4 prompt.
+After the agent proposes the test set, send:
+
+```text
+Approved. Proceed with the 20-case equivalence test and Simulink integration.
+```
+
+Confirm that the imported MATLAB network agrees with the PyTorch reference. In the validated reference run, the 20 cases produced MAE `6.26e-8`, RMSE `1.05e-7`, maximum absolute error `2.38e-7`, and cosine similarity `1.0`; small last-digit differences are acceptable. Then continue with the Phase 4 prompt if a separate Simulink review is needed.
 
 ## Phase 4 MATLAB and Simulink comparison
 
@@ -85,7 +91,7 @@ Use embedded-ai-deployment. Inspect the existing scripts under agentic_ai/genera
 ## Workshop boundaries
 
 - Do not modify `Exercise_1.m`, `Exercise_2.m`, or `Exercise_3.m`.
-- Do not install Python packages during the one-hour workshop.
+- Do not create or configure an external Python environment during the one-hour workshop. Part 2 uses the prepared 200-row PyTorch reference CSV paired with the prepared inputs.
 - Do not run full retraining or a long compression sweep.
 - Use the prepared checkpoints and deterministic test selections.
 - Participants stop after host verification and C-code inspection.
