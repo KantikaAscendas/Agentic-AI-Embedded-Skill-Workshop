@@ -44,7 +44,11 @@ hasPyTorchConverter = any(contains(addOnNames, ...
 compilerConfigurations = mex.getCompilerConfigurations("C++");
 hasCompiler = ~isempty(compilerConfigurations);
 
-userProfile = string(getenv("USERPROFILE"));
+if ispc
+    userProfile = string(getenv("USERPROFILE"));
+else
+    userProfile = string(getenv("HOME"));
+end
 experimentalSkillLocations = [
     fullfile(userProfile,".codex","skills","embedded-ai-deployment","SKILL.md")
     fullfile(userProfile,".agents","skills","embedded-ai-deployment","SKILL.md")
