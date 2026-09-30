@@ -236,7 +236,7 @@ Continue when the result is `READY` or `READY WITH FALLBACK`. Ask the instructor
 | 8 to 18 minutes | Part 1 baseline LSTM evaluation | SOC prediction and RMSE |
 | 18 to 32 minutes | Part 2 PyTorch MLP import and equivalence | Native `dlnetwork` and reference comparison |
 | 32 to 42 minutes | MATLAB versus Simulink comparison | Normal Simulation equivalence |
-| 42 to 55 minutes | Part 3 compression and host code verification | Size, RMSE delta, MEX result, and C report |
+| 42 to 55 minutes | Part 3 live projection, prepared fine-tuned comparison, and host code verification | Live compression evidence, size and accuracy trade-off, MEX result, and C report |
 | 55 to 60 minutes | Review and questions | Evidence summary and next steps |
 
 ### Start prompt
@@ -275,13 +275,23 @@ Simulink validates system-level integration before code generation, including si
 Proceed with the prepared MATLAB-native AI Simulink model. Use the same single-precision inputs for MATLAB prediction and Simulink Normal Simulation. Report input size, datatype, sample time, RMSE, and maximum absolute error. If a direct PyTorch Simulink block fails size or datatype propagation, record an optional-path warning and continue with the MATLAB-native Simulink model without modifying the original exercise files. Save the comparison evidence, then pause.
 ```
 
-### Part 3 prompt
+### Part 3 live compression prompt
 
 ```text
-Proceed with Part 3. The primary goal is minimum flash and model size for a Cortex-M deployment pattern. Single-precision floating point is acceptable. Use the prepared projected and fine-tuned LSTM checkpoint rather than running the long compression sweep or full training. Compare it with the baseline on the same samples and report learnables, estimated parameter bytes, RMSE, and RMSE delta. If a supported host compiler is configured, generate and validate a desktop MEX implementation before generating library-free C code and opening the code-generation report. If no compiler is configured, report a warning, use the instructor-prepared MEX evidence, and continue with C-source and report inspection without claiming a full local MEX pass. Then pause.
+Proceed with Part 3 using the embedded AI Pattern 1 workflow. The workshop compression decision is approved: the target is an ARM Cortex-M7 with Simulink, the primary goal is smaller flash and model size, single-precision floating point is acceptable, and no live retraining will be performed.
+
+Create and execute a visible MATLAB script under agentic_ai/generated. Load the baseline LSTM from Part_1_AI_modeling/models/trainedNetwork.mat. Use the same representative training/calibration selection defined in Part_3_Code_Gen/Exercise_3.m to calculate neuron PCA. Call compressNetworkUsingProjection once with LearnablesReductionGoal=0.95 to create one live projected candidate. Check the installed MATLAB R2026a help for the exact function signature before calling it. Do not run a compression sweep, do not call trainnet, do not modify the original exercise files, and do not overwrite Part_3_Code_Gen/models/dlnetFineTuned.mat.
+
+Evaluate three networks: the baseline LSTM, the newly projected candidate before fine-tuning, and the prepared projected and fine-tuned checkpoint from Part_3_Code_Gen/models/dlnetFineTuned.mat. Run all three on exactly the same independent held-out test sequences used in Part 1, with the same sample order, sample count, and single-precision inputs. Report learnables, estimated parameter bytes, actual memory reduction, RMSE, MAE, maximum absolute error, and each error delta from the baseline. Save the live projected candidate, metrics table, and comparison plots under agentic_ai/results.
+
+Explain explicitly that the projected candidate was compressed live by the Agent, while the prepared checkpoint is loaded only to demonstrate the accuracy recovery obtained previously through fine-tuning. Verify that the live projected candidate and prepared checkpoint have compatible projected architecture and learnable counts before describing them as before- and after-fine-tuning versions. If they differ, report the difference and treat them as separate compressed candidates.
+
+After presenting the accuracy-memory trade-off, pause for approval before desktop MEX generation. Do not proceed to C code in this step.
 ```
 
-The participant workflow ends after host verification and C-code inspection. STM32 NUCLEO-F767ZI deployment and PIL execution are instructor demonstrations.
+When the Agent pauses, review the evidence and approve the prepared fine-tuned checkpoint for code generation only if its accuracy and memory trade-off are acceptable. Then continue with the desktop MEX and library-free C prompts in the instructor-led sequence.
+
+The participant workflow ends after host verification and C-code inspection. Full compression sweeps and live fine-tuning remain optional instructor extensions. STM32 NUCLEO-F767ZI deployment and PIL execution are instructor demonstrations.
 
 ## Troubleshooting
 

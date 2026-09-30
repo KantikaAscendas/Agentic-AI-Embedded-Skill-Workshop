@@ -66,13 +66,21 @@ Proceed with the prepared MATLAB-native AI Simulink model. Use the same single-p
 
 Review the MATLAB and Simulink output agreement, then continue with the Phase 5 prompt.
 
-## Phase 5 Compression and C code generation
+## Phase 5 Live projection and prepared fine-tuned comparison
 
 ```text
-Proceed with Part 3. The primary goal is minimum flash and model size for a Cortex-M deployment pattern. Single-precision floating point is acceptable. Use the prepared projected and fine-tuned LSTM checkpoint rather than running the long compression sweep or full training. Compare it with the baseline on the same samples and report learnables, estimated parameter bytes, RMSE, and RMSE delta. If a supported host compiler is configured, generate and validate a desktop MEX implementation before generating library-free C code and opening the code-generation report. If no compiler is configured, report a warning, use the instructor-prepared MEX evidence, and continue with C-source and report inspection without claiming a full local MEX pass. Then pause.
+Proceed with Part 3 using the embedded AI Pattern 1 workflow. The workshop compression decision is approved: the target is an ARM Cortex-M7 with Simulink, the primary goal is smaller flash and model size, single-precision floating point is acceptable, and no live retraining will be performed.
+
+Create and execute a visible MATLAB script under agentic_ai/generated. Load the baseline LSTM from Part_1_AI_modeling/models/trainedNetwork.mat. Use the same representative training/calibration selection defined in Part_3_Code_Gen/Exercise_3.m to calculate neuron PCA. Call compressNetworkUsingProjection once with LearnablesReductionGoal=0.95 to create one live projected candidate. Check the installed MATLAB R2026a help for the exact function signature before calling it. Do not run a compression sweep, do not call trainnet, do not modify the original exercise files, and do not overwrite Part_3_Code_Gen/models/dlnetFineTuned.mat.
+
+Evaluate three networks: the baseline LSTM, the newly projected candidate before fine-tuning, and the prepared projected and fine-tuned checkpoint from Part_3_Code_Gen/models/dlnetFineTuned.mat. Run all three on exactly the same independent held-out test sequences used in Part 1, with the same sample order, sample count, and single-precision inputs. Report learnables, estimated parameter bytes, actual memory reduction, RMSE, MAE, maximum absolute error, and each error delta from the baseline. Save the live projected candidate, metrics table, and comparison plots under agentic_ai/results.
+
+Explain explicitly that the projected candidate was compressed live by the Agent, while the prepared checkpoint is loaded only to demonstrate the accuracy recovery obtained previously through fine-tuning. Verify that the live projected candidate and prepared checkpoint have compatible projected architecture and learnable counts before describing them as before- and after-fine-tuning versions. If they differ, report the difference and treat them as separate compressed candidates.
+
+After presenting the accuracy-memory trade-off, pause for approval before desktop MEX generation. Do not proceed to C code in this step.
 ```
 
-The participant workflow is complete after reviewing the model comparison, MEX evidence, generated C source, and code-generation report.
+After reviewing and approving the accuracy-memory evidence, continue with the instructor-led desktop MEX and library-free C prompts. The participant workflow is complete after reviewing the model comparison, MEX evidence, generated C source, and code-generation report.
 
 ## Setup recovery prompts
 
@@ -92,7 +100,7 @@ Use the ACTIVE_SKILL reported by workshopPreflight.m. Inspect the existing scrip
 
 - Do not modify `Exercise_1.m`, `Exercise_2.m`, or `Exercise_3.m`.
 - Do not create or configure an external Python environment during the one-hour workshop. Part 2 uses the prepared 200-row PyTorch reference CSV paired with the prepared inputs.
-- Do not run full retraining or a long compression sweep.
+- Run exactly one live projection candidate; do not run full retraining or a compression sweep.
 - Use the prepared checkpoints and deterministic test selections.
 - Participants stop after host verification and C-code inspection.
 - STM32 NUCLEO-F767ZI deployment and PIL execution are instructor demonstrations.
