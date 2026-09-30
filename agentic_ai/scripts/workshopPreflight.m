@@ -45,11 +45,28 @@ compilerConfigurations = mex.getCompilerConfigurations("C++");
 hasCompiler = ~isempty(compilerConfigurations);
 
 userProfile = string(getenv("USERPROFILE"));
-skillLocations = [
+experimentalSkillLocations = [
     fullfile(userProfile,".codex","skills","embedded-ai-deployment","SKILL.md")
     fullfile(userProfile,".agents","skills","embedded-ai-deployment","SKILL.md")
 ];
-hasAgentSkill = any(isfile(skillLocations));
+officialSkillLocations = [
+    fullfile(userProfile,".codex","skills","matlab-deploy-embedded-ai","SKILL.md")
+    fullfile(userProfile,".agents","skills","matlab-deploy-embedded-ai","SKILL.md")
+];
+hasExperimentalSkill = any(isfile(experimentalSkillLocations));
+hasOfficialSkill = any(isfile(officialSkillLocations));
+hasAgentSkill = hasExperimentalSkill || hasOfficialSkill;
+
+% Prefer the demo-bundled skill because this workshop was validated with it.
+% The official MATLAB Agentic Toolkit skill is accepted as a compatible
+% alternative and is reported explicitly so the prompt can use its real name.
+if hasExperimentalSkill
+    activeSkillName = "embedded-ai-deployment";
+elseif hasOfficialSkill
+    activeSkillName = "matlab-deploy-embedded-ai";
+else
+    activeSkillName = "NONE";
+end
 
 participantReady = releaseOK && all(productInstalled) && ...
     hasCompressionLibrary && hasDeepLearningCodegen && ...
@@ -69,16 +86,25 @@ fprintf("Add-on %-46s %s\n", ...
 fprintf("Add-on %-46s %s\n", ...
     "PyTorch Model Converter",yesNo(hasPyTorchConverter));
 fprintf("C++ MEX compiler configured: %s\n",yesNo(hasCompiler));
-fprintf("embedded-ai-deployment installed: %s\n",yesNo(hasAgentSkill));
+fprintf("Demo skill embedded-ai-deployment installed: %s\n", ...
+    yesNo(hasExperimentalSkill));
+fprintf("Official skill matlab-deploy-embedded-ai installed: %s\n", ...
+    yesNo(hasOfficialSkill));
+fprintf("Compatible embedded AI deployment skill: %s\n", ...
+    yesNo(hasAgentSkill));
+fprintf("ACTIVE_SKILL=%s\n",activeSkillName);
 fprintf("READY=%s\n",lower(string(participantReady)));
 
 requirements = ["MATLAB release"; requiredProducts; ...
     "Model Compression Library"; ...
     "MATLAB Coder Interface for Deep Learning"; ...
     "PyTorch Model Converter"; "C++ MEX compiler"; ...
-    "embedded-ai-deployment skill"];
+    "Demo skill embedded-ai-deployment"; ...
+    "Official skill matlab-deploy-embedded-ai"; ...
+    "Compatible embedded AI deployment skill"];
 available = [releaseOK; productInstalled; hasCompressionLibrary; ...
-    hasDeepLearningCodegen; hasPyTorchConverter; hasCompiler; hasAgentSkill];
+    hasDeepLearningCodegen; hasPyTorchConverter; hasCompiler; ...
+    hasExperimentalSkill; hasOfficialSkill; hasAgentSkill];
 preflight = table(requirements,available, ...
     VariableNames=["Requirement","Available"]);
 writetable(preflight,fullfile(resultsFolder,"preflight.csv"));

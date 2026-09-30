@@ -23,7 +23,7 @@ satk_initialize
 ## Phase 0 Environment preflight
 
 ```text
-Use embedded-ai-deployment. Perform a read-only workshop preflight only. Do not inspect project data or models and do not modify files. Verify that the skill is available, a live MATLAB MCP session is connected, the exact release is MATLAB R2026a, required products and support packages are present, Simulink Agentic Toolkit tools are available, and agentic_ai/scripts/workshopPreflight.m passes. Detect the host operating system and processor architecture. On macOS, confirm Apple silicon and a selected Xcode 16 or Xcode 26 C and C++ compiler. Report Python separately as managed runtime available, external Python available, or unavailable. Confirm that agentic_ai/generated and agentic_ai/results are writable. If the compiler is missing but the other requirements pass, return READY WITH FALLBACK and state that desktop MEX compilation will use instructor-prepared evidence. Return a concise PASS, WARNING, or FAIL table and finish with READY, READY WITH FALLBACK, or NOT READY. Stop and wait for approval.
+Use embedded-ai-deployment. If that skill is unavailable but matlab-deploy-embedded-ai is installed, use matlab-deploy-embedded-ai instead. Perform a read-only workshop preflight only. Do not inspect project data or models and do not modify files. Verify that a compatible embedded AI deployment skill is available, a live MATLAB MCP session is connected, the exact release is MATLAB R2026a, required products and support packages are present, Simulink Agentic Toolkit tools are available, and agentic_ai/scripts/workshopPreflight.m passes. Report the exact ACTIVE_SKILL printed by the script. Detect the host operating system and processor architecture. On macOS, confirm Apple silicon and a selected Xcode 16 or Xcode 26 C and C++ compiler. Report Python separately as managed runtime available, external Python available, or unavailable. Confirm that agentic_ai/generated and agentic_ai/results are writable. If the compiler is missing but the other requirements pass, return READY WITH FALLBACK and state that desktop MEX compilation will use instructor-prepared evidence. Return a concise PASS, WARNING, or FAIL table and finish with READY, READY WITH FALLBACK, or NOT READY. Stop and wait for approval.
 ```
 
 Continue when the result is `READY` or `READY WITH FALLBACK`. Ask the instructor for help if the result is `NOT READY`.
@@ -31,7 +31,7 @@ Continue when the result is `READY` or `READY WITH FALLBACK`. Ask the instructor
 ## Phase 1 Project discovery
 
 ```text
-Use embedded-ai-deployment. Work with this battery State-of-Charge repository in the connected MATLAB R2026a session. Preserve Exercise_1.m, Exercise_2.m, and Exercise_3.m. Create executable .m scripts under agentic_ai/generated and results under agentic_ai/results; also maintain a participant-facing Live Script summary when supported. Work one phase at a time, explain the evidence, and pause for approval. The participant workflow ends after host verification and C-code inspection. Begin with project discovery and a concise project summary only.
+Use the ACTIVE_SKILL reported by agentic_ai/scripts/workshopPreflight.m: embedded-ai-deployment for the validated demo package, or matlab-deploy-embedded-ai when only the official MATLAB Agentic Toolkit skill is installed. Work with this battery State-of-Charge repository in the connected MATLAB R2026a session. Preserve Exercise_1.m, Exercise_2.m, and Exercise_3.m. Create executable .m scripts under agentic_ai/generated and results under agentic_ai/results; also maintain a participant-facing Live Script summary when supported. Work one phase at a time, explain the evidence, and pause for approval. The participant workflow ends after host verification and C-code inspection. Begin with project discovery and a concise project summary only.
 ```
 
 Review the project summary, then continue with the Phase 2 prompt.
@@ -79,13 +79,13 @@ The participant workflow is complete after reviewing the model comparison, MEX e
 ### Check the MATLAB connection and installed tools
 
 ```text
-Perform a read-only connection check. Confirm that MATLAB R2026a is connected through MCP, list the required installed products and add-ons, confirm that Simulink Agentic Toolkit tools are available, and confirm that embedded-ai-deployment is installed. Do not modify any files. Finish with READY, READY WITH FALLBACK, or NOT READY.
+Perform a read-only connection check. Confirm that MATLAB R2026a is connected through MCP, list the required installed products and add-ons, confirm that Simulink Agentic Toolkit tools are available, and confirm that either embedded-ai-deployment or matlab-deploy-embedded-ai is installed. Report the exact ACTIVE_SKILL. Do not modify any files. Finish with READY, READY WITH FALLBACK, or NOT READY.
 ```
 
 ### Resume from existing workshop evidence
 
 ```text
-Use embedded-ai-deployment. Inspect the existing scripts under agentic_ai/generated and evidence under agentic_ai/results. Summarize which workshop phases are complete and which phase should run next. Do not repeat completed phases and do not modify the original Exercise_1.m, Exercise_2.m, or Exercise_3.m files. Stop and wait for approval.
+Use the ACTIVE_SKILL reported by workshopPreflight.m. Inspect the existing scripts under agentic_ai/generated and evidence under agentic_ai/results. Summarize which workshop phases are complete and which phase should run next. Do not repeat completed phases and do not modify the original Exercise_1.m, Exercise_2.m, or Exercise_3.m files. Stop and wait for approval.
 ```
 
 ## Workshop boundaries

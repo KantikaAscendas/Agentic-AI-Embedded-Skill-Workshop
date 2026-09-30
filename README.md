@@ -1,6 +1,6 @@
 # Agentic AI Embedded Skill Workshop
 
-This repository contains the participant files for the one-hour Battery State-of-Charge deployment workshop. Participants use the experimental `embedded-ai-deployment` Agent Skill with MATLAB R2026a to evaluate a prepared LSTM, import and verify a PyTorch MLP, compare a projected LSTM, and generate C code. The instructor completes the final demonstration on an STMicroelectronics NUCLEO-F767ZI.
+This repository contains the participant files for the one-hour Battery State-of-Charge deployment workshop. Participants use the demo-bundled experimental `embedded-ai-deployment` Agent Skill with MATLAB R2026a to evaluate a prepared LSTM, import and verify a PyTorch MLP, compare a projected LSTM, and generate C code. The preflight also recognizes the newer official `matlab-deploy-embedded-ai` skill from the MATLAB Agentic Toolkit and reports which skill name is active. The instructor completes the final demonstration on an STMicroelectronics NUCLEO-F767ZI.
 
 ## Start here
 

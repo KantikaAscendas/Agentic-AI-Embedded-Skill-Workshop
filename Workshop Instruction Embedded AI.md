@@ -144,8 +144,10 @@ The `satk_initialize` command adds the Simulink tools, validates the installatio
 Open Codex in the workshop repository and send this prompt. Review and approve the requested installation. Start a new Codex task after installation so the skill becomes available.
 
 ```text
-Install the embedded-ai-deployment skill from https://github.com/matlab/agent-skills-playground/tree/main/skills/embedded-ai-deployment
+Install the embedded-ai-deployment skill from https://github.com/matlab/agent-skills-playground/tree/main/demos/embedded-ai-deployment/skills/embedded-ai-deployment
 ```
+
+This demo-bundled package keeps the skill name `embedded-ai-deployment`, which is the version used to validate this workshop. New MATLAB Agentic Toolkit installations may also provide the official skill `matlab-deploy-embedded-ai`. The preflight script detects both names, prefers the validated demo skill when both are present, and prints the exact `ACTIVE_SKILL` to use in the remaining prompts.
 
 ## Verify the setup
 
@@ -160,7 +162,7 @@ run("agentic_ai/scripts/workshopPreflight.m")
 4. Open Codex in the workshop repository and send the read-only preflight prompt:
 
 ```text
-Use embedded-ai-deployment. Perform a read-only workshop preflight only. Do not inspect project data or models and do not modify files. Verify that the skill is available, a live MATLAB MCP session is connected, the exact release is MATLAB R2026a, required products and support packages are present, Simulink Agentic Toolkit tools are available, and agentic_ai/scripts/workshopPreflight.m passes. Detect the host operating system and processor architecture. On macOS, confirm Apple silicon and a selected Xcode 16 or Xcode 26 C and C++ compiler. Report Python separately as managed runtime available, external Python available, or unavailable. Confirm that agentic_ai/generated and agentic_ai/results are writable. If the compiler is missing but the other requirements pass, return READY WITH FALLBACK and state that desktop MEX compilation will use instructor-prepared evidence. Return a concise PASS, WARNING, or FAIL table and finish with READY, READY WITH FALLBACK, or NOT READY. Stop and wait for approval.
+Use embedded-ai-deployment. If that skill is unavailable but matlab-deploy-embedded-ai is installed, use matlab-deploy-embedded-ai instead. Perform a read-only workshop preflight only. Do not inspect project data or models and do not modify files. Verify that a compatible embedded AI deployment skill is available, a live MATLAB MCP session is connected, the exact release is MATLAB R2026a, required products and support packages are present, Simulink Agentic Toolkit tools are available, and agentic_ai/scripts/workshopPreflight.m passes. Report the exact ACTIVE_SKILL printed by the script. Detect the host operating system and processor architecture. On macOS, confirm Apple silicon and a selected Xcode 16 or Xcode 26 C and C++ compiler. Report Python separately as managed runtime available, external Python available, or unavailable. Confirm that agentic_ai/generated and agentic_ai/results are writable. If the compiler is missing but the other requirements pass, return READY WITH FALLBACK and state that desktop MEX compilation will use instructor-prepared evidence. Return a concise PASS, WARNING, or FAIL table and finish with READY, READY WITH FALLBACK, or NOT READY. Stop and wait for approval.
 ```
 
 Continue when the result is `READY` or `READY WITH FALLBACK`. Ask the instructor for help if it reports `NOT READY`.
@@ -179,7 +181,7 @@ Continue when the result is `READY` or `READY WITH FALLBACK`. Ask the instructor
 ### Start prompt
 
 ```text
-Use embedded-ai-deployment. Work with this battery State-of-Charge repository in the connected MATLAB R2026a session. Preserve Exercise_1.m, Exercise_2.m, and Exercise_3.m. Create executable .m scripts under agentic_ai/generated and results under agentic_ai/results; also maintain a participant-facing Live Script summary when supported. Work one phase at a time, explain the evidence, and pause for approval. The participant workflow ends after host verification and C-code inspection. Begin with project discovery and a concise project summary only.
+Use the ACTIVE_SKILL reported by agentic_ai/scripts/workshopPreflight.m: embedded-ai-deployment for the validated demo package, or matlab-deploy-embedded-ai when only the official MATLAB Agentic Toolkit skill is installed. Work with this battery State-of-Charge repository in the connected MATLAB R2026a session. Preserve Exercise_1.m, Exercise_2.m, and Exercise_3.m. Create executable .m scripts under agentic_ai/generated and results under agentic_ai/results; also maintain a participant-facing Live Script summary when supported. Work one phase at a time, explain the evidence, and pause for approval. The participant workflow ends after host verification and C-code inspection. Begin with project discovery and a concise project summary only.
 ```
 
 ### Part 1 prompt
@@ -226,7 +228,7 @@ The participant workflow ends after host verification and C-code inspection. STM
 |---|---|
 | Company policy blocks installation | Do not bypass policy. Pair with a prepared participant or follow the instructor. |
 | Codex cannot see MATLAB | Run the operating-system-neutral `addpath` command and `satk_initialize` in the MATLAB session you want Codex to use. |
-| Skill is not available | Start a new Codex task after installation and explicitly say `Use embedded-ai-deployment`. |
+| Skill is not available | Install the demo-bundled `embedded-ai-deployment` package, start a new Codex task, rerun `workshopPreflight.m`, and use the exact name printed after `ACTIVE_SKILL=`. The official Toolkit alternative is `matlab-deploy-embedded-ai`. |
 | Preflight reports a missing item | Install the named MATLAB product or add-on before continuing. |
 | MEX compiler is missing | Windows: configure MinGW-w64 or a supported Microsoft compiler. macOS: install Xcode 16 or 26, accept its license, then run `mex -setup C` and `mex -setup C++`. Continue as `READY WITH FALLBACK` if installation is blocked. |
 | Build takes too long | Use the prepared checkpoint and instructor-generated artifacts. Do not retrain. |
@@ -240,6 +242,7 @@ The participant workflow ends after host verification and C-code inspection. STM
 - [Workshop repository](https://github.com/KantikaAscendas/Agentic-AI-Embedded-Skill-Workshop)
 - [MATLAB Agentic Toolkit](https://github.com/matlab/matlab-agentic-toolkit)
 - [Agent Skills Playground](https://github.com/matlab/agent-skills-playground)
+- [Embedded AI Deployment demo and bundled skill](https://github.com/matlab/agent-skills-playground/tree/main/demos/embedded-ai-deployment)
 - [Codex CLI guide](https://developers.openai.com/codex/cli)
 - [ChatGPT desktop app](https://chatgpt.com/download)
 - [Official Codex pricing and usage guidance](https://learn.chatgpt.com/docs/pricing)
