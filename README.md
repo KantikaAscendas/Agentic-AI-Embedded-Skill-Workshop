@@ -4,23 +4,23 @@ This repository contains the participant files for the one-hour Battery State-of
 
 ## Start here
 
-1. Read `MATLAB Desktop Setup Instruction - Agentic AI Embedded Skill Workshop.pdf` and install MATLAB R2026a, the required add-ons, and the compiler for your operating system.
-2. Read [`Workshop Instruction Embedded AI.md`](Workshop%20Instruction%20Embedded%20AI.md) online, or use `Workshop Instruction Embedded AI.pdf` as the printable version.
+1. Open [`Workshop Instruction Embedded AI.md`](Workshop%20Instruction%20Embedded%20AI.md). This is the only participant guide required: it contains MATLAB preparation, Codex, Claude Code, and Antigravity CLI choices, setup verification, and all copyable workshop prompts.
+2. Install only one AI coding agent. Codex is the validated default, Claude Code is a supported alternative, and Antigravity CLI is an optional advanced alternative.
 3. Clone this repository to a short, writable local path.
 4. Open `Aimbdworkshop.prj` in MATLAB R2026a.
 5. Run `agentic_ai/scripts/workshopPreflight.m`.
 6. Confirm `READY=true`. If only the desktop compiler is unavailable, continue as `READY WITH FALLBACK` and use the instructor-prepared MEX evidence.
-7. Open this repository in Codex and copy the prompts from [`WORKSHOP_PROMPTS.md`](WORKSHOP_PROMPTS.md).
+
+`Workshop Instruction Embedded AI.pdf` is an optional printable copy. `WORKSHOP_PROMPTS.md` is an optional prompt-only quick reference; participants do not need to open either file to complete the workshop.
 
 For a Thai explanation of every distributed file and folder, read [`REPOSITORY_GUIDE_TH.md`](REPOSITORY_GUIDE_TH.md).
 
-## Codex account for the workshop
+## AI agent account for the workshop
 
-- A ChatGPT Free account can be used for the guided exercises; a paid plan is not required to attend.
-- Free-plan Codex usage is limited and can vary with the model, task complexity, context, reasoning, and tool use.
-- Sign in and run a short Codex test before the event. If a limit is reached during the workshop, pair with another participant and use the verified fallback scripts in `agentic_ai/reference`.
-- An OpenAI API key is not required for this workshop.
-- See the [official Codex pricing and usage guidance](https://learn.chatgpt.com/docs/pricing) for current plan information.
+- Participants install only one supported agent: Codex, Claude Code, or Google Antigravity CLI.
+- Use an existing paid subscription when available. A free tier may be used, subject to the provider's current usage allowance.
+- Sign in and run a short test before the event. If a limit is reached during the workshop, pair with another participant and use the verified fallback scripts in `agentic_ai/reference`.
+- API keys are not required for the standard workshop path. Do not share credentials or keys.
 
 ## Repository contents
 
@@ -32,8 +32,8 @@ For a Thai explanation of every distributed file and folder, read [`REPOSITORY_G
 - `agentic_ai/reference`: verified Part 1 and Part 2 instructor fallback scripts.
 - `agentic_ai/generated`: agents add visible, reproducible MATLAB scripts here.
 - `agentic_ai/results` and `agentic_ai/build`: generated locally and excluded from Git.
-- `WORKSHOP_PROMPTS.md`: copyable prompts for every gated workshop phase and setup recovery.
-- `Workshop Instruction Embedded AI.md`: complete web-readable participant guide with copyable commands and prompts.
+- `Workshop Instruction Embedded AI.md`: the single required participant guide, including setup, agent choices, verification, and every copyable prompt.
+- `WORKSHOP_PROMPTS.md`: optional prompt-only quick reference.
 - `Workshop Instruction Embedded AI.pdf`: printable participant guide with the same workshop workflow.
 
 ## Workshop boundaries
