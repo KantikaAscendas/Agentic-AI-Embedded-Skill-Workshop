@@ -13,7 +13,7 @@ This repository contains the participant files for the one-hour Battery State-of
 
 `Workshop Instruction Embedded AI.pdf` is an optional printable copy. `WORKSHOP_PROMPTS.md` is an optional prompt-only quick reference; participants do not need to open either file to complete the workshop.
 
-For a Thai explanation of every distributed file and folder, read [`REPOSITORY_GUIDE_TH.md`](REPOSITORY_GUIDE_TH.md).
+For a detailed Thai explanation of what every prompt does to the data and AI models, read [`WORKSHOP_WORKFLOW_GUIDE_TH.md`](WORKSHOP_WORKFLOW_GUIDE_TH.md). For a Thai explanation of every distributed file and folder, read [`REPOSITORY_GUIDE_TH.md`](REPOSITORY_GUIDE_TH.md).
 
 ## AI agent account for the workshop
 
@@ -33,6 +33,7 @@ For a Thai explanation of every distributed file and folder, read [`REPOSITORY_G
 - `agentic_ai/generated`: agents add visible, reproducible MATLAB scripts here.
 - `agentic_ai/results` and `agentic_ai/build`: generated locally and excluded from Git.
 - `Workshop Instruction Embedded AI.md`: the single required participant guide, including setup, agent choices, verification, and every copyable prompt.
+- `WORKSHOP_WORKFLOW_GUIDE_TH.md`: detailed Thai explanation of every phase, data flow, model transformation, evidence, and approval gate.
 - `WORKSHOP_PROMPTS.md`: optional prompt-only quick reference.
 - `Workshop Instruction Embedded AI.pdf`: printable participant guide with the same workshop workflow.
 

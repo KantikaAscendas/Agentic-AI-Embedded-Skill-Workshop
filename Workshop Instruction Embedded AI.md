@@ -311,6 +311,7 @@ The participant workflow ends after host verification and C-code inspection. Ful
 ## Reference links
 
 - [Workshop repository](https://github.com/KantikaAscendas/Agentic-AI-Embedded-Skill-Workshop)
+- [Detailed Thai workflow explanation](WORKSHOP_WORKFLOW_GUIDE_TH.md)
 - [MATLAB Agentic Toolkit](https://github.com/matlab/matlab-agentic-toolkit)
 - [Agent Skills Playground](https://github.com/matlab/agent-skills-playground)
 - [Embedded AI Deployment demo and bundled skill](https://github.com/matlab/agent-skills-playground/tree/main/demos/embedded-ai-deployment)

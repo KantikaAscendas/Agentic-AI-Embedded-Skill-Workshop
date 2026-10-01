@@ -7,7 +7,7 @@ When the user asks to run this workshop:
 - Use the prepared train, validation, and test data. Do not create a new data split.
 - Use `Part_1_AI_modeling/models/trainedNetwork.mat` as the baseline LSTM.
 - Use `Part_2_AI_import/models/mlp_soc_model.pt2` for the PyTorch import and equivalence exercise. The imported network is a weight source only; reference outputs must come from the original PyTorch model.
-- Use 200 deterministic Part 2 equivalence tests: 50 samples from each temperature file.
+- Use the prepared pool of 200 deterministic Part 2 reference cases: 50 samples from each temperature file. For the one-hour participant flow, propose and wait for approval of 20 representative cases: five evenly spaced cases from each temperature group. The full 200-case run is an optional extended validation.
 - In Part 3, create one live projected candidate from the baseline with `LearnablesReductionGoal=0.95`, using the representative training/calibration selection from `Part_3_Code_Gen/Exercise_3.m`. Do not run a sweep or live fine-tuning.
 - Use `Part_3_Code_Gen/models/dlnetFineTuned.mat` as the prepared projected and fine-tuned LSTM that demonstrates accuracy recovery after fine-tuning. Never overwrite this checkpoint.
 - Evaluate the baseline, live projected candidate before fine-tuning, and prepared fine-tuned checkpoint on exactly the same independent held-out test sequences used in Part 1.
